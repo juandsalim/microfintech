@@ -9,3 +9,4 @@
 /home/juan/proyectos/MicroFintech/src/Domain/obj/Debug/net8.0/refint/Domain.dll
 /home/juan/proyectos/MicroFintech/src/Domain/obj/Debug/net8.0/Domain.pdb
 /home/juan/proyectos/MicroFintech/src/Domain/obj/Debug/net8.0/ref/Domain.dll
+/home/juan/proyectos/MicroFintech/src/Domain/obj/Debug/net8.0/Domain.sourcelink.json

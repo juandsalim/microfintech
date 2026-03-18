@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "zHpiEVjJPRtrO80Vsb3V2kpR+u5OPO6bK1fzBgAJkwWMuiUq6g0C+oJgv7XrQTs6SA2E4DhbX09oqMKBJsNh4Q==",
+  "dgSpecHash": "YQkVbz41K2EQ+TTwu0d8wAIV/87SDdLMaqC4H/KgYgYlSilSX04DV5VEdDTaWz0eoYdWSLm92EueBblLQNQ2MA==",
   "success": true,
   "projectFilePath": "/home/juan/proyectos/MicroFintech/src/Services/FraudDetection.gRPC/FraudDetection.gRPC.csproj",
   "expectedPackageFiles": [
@@ -20,7 +20,10 @@
     "/home/juan/.nuget/packages/microsoft.extensions.logging.abstractions/6.0.0/microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
     "/home/juan/.nuget/packages/microsoft.extensions.options/6.0.0/microsoft.extensions.options.6.0.0.nupkg.sha512",
     "/home/juan/.nuget/packages/microsoft.extensions.primitives/6.0.0/microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "/home/juan/.nuget/packages/microsoft.ml.onnxruntime/1.17.3/microsoft.ml.onnxruntime.1.17.3.nupkg.sha512",
+    "/home/juan/.nuget/packages/microsoft.ml.onnxruntime.managed/1.17.3/microsoft.ml.onnxruntime.managed.1.17.3.nupkg.sha512",
     "/home/juan/.nuget/packages/system.diagnostics.diagnosticsource/6.0.0/system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
+    "/home/juan/.nuget/packages/system.memory/4.5.5/system.memory.4.5.5.nupkg.sha512",
     "/home/juan/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],
   "logs": []

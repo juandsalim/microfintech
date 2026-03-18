@@ -123,3 +123,4 @@
 /home/juan/proyectos/MicroFintech/src/Services/FinancialCore.API/bin/Debug/net8.0/Grpc.Net.Client.dll
 /home/juan/proyectos/MicroFintech/src/Services/FinancialCore.API/bin/Debug/net8.0/Grpc.Net.Common.dll
 /home/juan/proyectos/MicroFintech/src/Services/FinancialCore.API/bin/Debug/net8.0/Grpc.Net.ClientFactory.dll
+/home/juan/proyectos/MicroFintech/src/Services/FinancialCore.API/obj/Debug/net8.0/FinancialCore.API.sourcelink.json

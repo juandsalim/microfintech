@@ -31,6 +31,11 @@ In financial systems, state mutation must be strictly controlled. The `Account` 
 Traditional HTTP/1.1 REST is too slow for internal microservice communication in high-throughput environments. The Fraud Engine communicates with the Core API via **HTTP/2 and Protocol Buffers (gRPC)**. 
 *Note: The scoring logic establishes the foundation for integrating complex statistical models and anomaly detection algorithms, bringing mathematical precision to risk management.*
 
+### Machine Learning Integration (ONNX)
+The Fraud Engine is not a simple rules-based system. It integrates a **Random Forest classification model** trained in Python using Scikit-Learn.
+* **Mathematical Foundation:** The model is trained on synthetic financial datasets, identifying outliers based on standard deviation bounds and frequency distributions.
+* **Real-time Inference:** Exported to the **ONNX** (Open Neural Network Exchange) format, the model is consumed natively within the .NET 8 gRPC service using `Microsoft.ML.OnnxRuntime`. This allows cross-language AI integration with near-zero latency, avoiding the overhead of external HTTP calls to Python APIs.
+
 ### 3. Event-Driven Settlement to prevent Bottlenecks
 When a transaction is approved, the API does not force the user to wait for database locks. It returns a `202 Accepted` and publishes an event to a **Redis Pub/Sub channel**. A dedicated Worker Service consumes this queue and processes the settlement asynchronously, allowing the system to handle massive traffic spikes gracefully.
 

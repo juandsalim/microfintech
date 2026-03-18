@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FraudDetection.gRPC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+68fa987c0aa86b6f6bed774ff9e32072923207c9")]
 [assembly: System.Reflection.AssemblyProductAttribute("FraudDetection.gRPC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FraudDetection.gRPC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

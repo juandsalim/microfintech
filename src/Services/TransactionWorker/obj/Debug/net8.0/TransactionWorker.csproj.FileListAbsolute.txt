@@ -49,3 +49,4 @@
 /home/juan/proyectos/MicroFintech/src/Services/TransactionWorker/obj/Debug/net8.0/TransactionWorker.pdb
 /home/juan/proyectos/MicroFintech/src/Services/TransactionWorker/obj/Debug/net8.0/TransactionWorker.genruntimeconfig.cache
 /home/juan/proyectos/MicroFintech/src/Services/TransactionWorker/obj/Debug/net8.0/ref/TransactionWorker.dll
+/home/juan/proyectos/MicroFintech/src/Services/TransactionWorker/obj/Debug/net8.0/TransactionWorker.sourcelink.json

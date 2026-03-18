@@ -1,46 +1,53 @@
-// src/Services/FraudDetection.gRPC/Services/FraudScoringService.cs
 using Grpc.Core;
 using FraudDetection.gRPC;
+using Microsoft.ML.OnnxRuntime;
+using Microsoft.ML.OnnxRuntime.Tensors;
 
 namespace FraudDetection.gRPC.Services;
 
-// Fíjate cómo heredamos de la clase base que .NET generó mágicamente a partir del archivo .proto
 public class FraudScoringService : FraudScoring.FraudScoringBase
 {
     private readonly ILogger<FraudScoringService> _logger;
+    private readonly InferenceSession _onnxSession;
 
     public FraudScoringService(ILogger<FraudScoringService> logger)
     {
         _logger = logger;
+        // Cargamos el modelo matemático en memoria al iniciar el servicio
+        var modelPath = Path.Combine(AppContext.BaseDirectory, "ML", "fraud_model.onnx");
+        _onnxSession = new InferenceSession(modelPath);
     }
 
+    // FÍJATE AQUÍ: Cambiamos a Task<FraudResponse>
     public override Task<FraudResponse> AnalyzeTransaction(TransactionRequest request, ServerCallContext context)
     {
-        _logger.LogInformation($"Analyzing transaction for User: {request.UserId}, Amount: {request.Amount}");
+        _logger.LogInformation($"[ML Engine] Analizando transacción de {request.Amount} {request.Currency}");
 
-        bool isSafe = true;
-        double score = 0.1; // 0.0 es totalmente seguro, 1.0 es fraude seguro
-        string reason = "Standard transaction";
+        // 1. PREPARACIÓN MATEMÁTICA
+        float[] inputData = new float[] { (float)request.Amount, 1.0f };
+        var tensor = new DenseTensor<float>(inputData, new int[] { 1, 2 });
+        var inputs = new List<NamedOnnxValue>
+        {
+            NamedOnnxValue.CreateFromTensor("float_input", tensor)
+        };
 
-        // Lógica matemática inicial de scoring (Mockup para la detección de anomalías)
-        // Más adelante, aquí cargaremos el modelo entrenado con ML.NET
-        if (request.Amount > 10000)
-        {
-            isSafe = false;
-            score = 0.85;
-            reason = "Amount exceeds normal standard deviation bounds";
-        }
-        else if (request.Amount > 5000)
-        {
-            score = 0.5;
-            reason = "High amount, requires manual review";
-        }
+        // 2. INFERENCIA EN TIEMPO REAL
+        using var results = _onnxSession.Run(inputs);
 
-        return Task.FromResult(new FraudResponse
+        // 3. EXTRACCIÓN DEL RESULTADO
+        var prediction = results.First(r => r.Name == "output_label").AsEnumerable<long>().First();
+        bool isFraud = prediction == 1;
+
+        // FÍJATE AQUÍ: Instanciamos FraudResponse y usamos las propiedades en PascalCase
+        var response = new FraudResponse
         {
-            IsSafe = isSafe,
-            RiskScore = score,
-            RiskReason = reason
-        });
+            IsSafe = !isFraud,
+            RiskScore = isFraud ? 0.99 : 0.05,
+            RiskReason = isFraud ? "ML Model detected anomaly based on statistical patterns." : "Clear"
+        };
+
+        _logger.LogInformation($"[ML Engine] Resultado de Inferencia: {(isFraud ? "FRAUDE" : "SEGURO")}");
+
+        return Task.FromResult(response);
     }
 }
