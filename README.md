@@ -42,6 +42,15 @@ When a transaction is approved, the API does not force the user to wait for data
 ### 4. Distributed Caching for Exchange Rates
 Querying relational databases for highly volatile data like exchange rates is inefficient. Rates are stored in **Redis** with an absolute expiration time (TTL), ensuring $O(1)$ lookup complexity while preventing stale financial data.
 
+### Architecture Trade-offs & Production Readiness
+
+**Message Broker Simulation (Redis vs. RabbitMQ/Kafka)**
+For this demonstration, **Redis Pub/Sub** was chosen to handle the asynchronous communication between the Core API and the Transaction Worker. 
+
+* **The rationale:** Redis Pub/Sub is incredibly lightweight, ultra-low latency, and easy to orchestrate within a `docker-compose` environment for portfolio demonstration purposes.
+* **The trade-off:** Redis Pub/Sub implements a "fire-and-forget" pattern. It does not natively support message persistence, Acknowledgments (ACKs), or Dead Letter Queues (DLQ).
+* **Production evolution:** In a real-world, highly available financial system, this component would be abstracted and swapped for a robust message broker like **RabbitMQ**, **Apache Kafka**, or **Azure Service Bus**. That upgrade, combined with a retry policy library like **Polly** in the Worker, would guarantee eventual consistency and zero message loss in the event of database deadlocks or network partitions.
+
 ##  How to Run Locally
 
 1. Clone the repository.
@@ -65,6 +74,8 @@ Querying relational databases for highly volatile data like exchange rates is in
     dotnet run --project src/Services/FinancialCore.API
     
 5. Open Swagger at http://localhost:<PORT>/swagger to test the endpoints.
+
+
 
 ```mermaid
 sequenceDiagram
