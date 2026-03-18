@@ -66,3 +66,36 @@ Querying relational databases for highly volatile data like exchange rates is in
     
 5. Open Swagger at http://localhost:<PORT>/swagger to test the endpoints.
 
+```mermaid
+sequenceDiagram
+    participant Client as Cliente (Swagger)
+    participant API as FinancialCore.API
+    participant gRPC as Fraud Engine (gRPC)
+    participant Redis as Redis Pub/Sub
+    participant Worker as Transaction Worker
+    participant DB as PostgreSQL Ledger
+
+    Client->>API: POST /api/transactions (REST)
+    
+    rect rgb(30, 30, 30)
+    Note over API, gRPC: Inferencia de Baja Latencia
+    API->>gRPC: AnalyzeTransaction (HTTP/2 + Protobuf)
+    Note over gRPC: Carga Tensor ONNX<br/>Inferencia Random Forest
+    end
+
+    alt Es Fraude (Anomalía)
+        gRPC-->>API: FraudResponse (Score: 0.99)
+        API-->>Client: 400 Bad Request (Rejected)
+    else Es Seguro (Normal)
+        gRPC-->>API: FraudResponse (Score: 0.05)
+        
+        rect rgb(30, 30, 30)
+        Note over API, Worker: Liquidación Asíncrona
+        API-)Redis: Publicar Evento (approved_transactions)
+        API-->>Client: 202 Accepted (Processing)
+        Redis-)Worker: Consumir Evento en 2do plano
+        Note over Worker: Procesamiento Pesado (I/O)
+        Worker->>DB: Actualizar Balance Contable
+        end
+    end
+    
