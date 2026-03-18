@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "SoGQDjh76pRGqW9QXNZ4ahvY5SH6OK/gmQ0RZ8XotD4=",
+  "Source": "FinancialCore.API",
+  "BasePath": "_content/FinancialCore.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

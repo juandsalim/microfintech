@@ -1,0 +1,2 @@
+obj/Debug/net8.0/Fraud.cs \
+obj/Debug/net8.0/FraudGrpc.cs: ../FraudDetection.gRPC/Protos/fraud.proto

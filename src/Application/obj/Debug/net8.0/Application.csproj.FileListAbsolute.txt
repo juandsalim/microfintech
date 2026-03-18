@@ -1,0 +1,15 @@
+/home/juan/proyectos/MicroFintech/src/Application/bin/Debug/net8.0/Application.deps.json
+/home/juan/proyectos/MicroFintech/src/Application/bin/Debug/net8.0/Application.dll
+/home/juan/proyectos/MicroFintech/src/Application/bin/Debug/net8.0/Application.pdb
+/home/juan/proyectos/MicroFintech/src/Application/bin/Debug/net8.0/Domain.dll
+/home/juan/proyectos/MicroFintech/src/Application/bin/Debug/net8.0/Domain.pdb
+/home/juan/proyectos/MicroFintech/src/Application/obj/Debug/net8.0/Application.csproj.AssemblyReference.cache
+/home/juan/proyectos/MicroFintech/src/Application/obj/Debug/net8.0/Application.GeneratedMSBuildEditorConfig.editorconfig
+/home/juan/proyectos/MicroFintech/src/Application/obj/Debug/net8.0/Application.AssemblyInfoInputs.cache
+/home/juan/proyectos/MicroFintech/src/Application/obj/Debug/net8.0/Application.AssemblyInfo.cs
+/home/juan/proyectos/MicroFintech/src/Application/obj/Debug/net8.0/Application.csproj.CoreCompileInputs.cache
+/home/juan/proyectos/MicroFintech/src/Application/obj/Debug/net8.0/Application.csproj.CopyComplete
+/home/juan/proyectos/MicroFintech/src/Application/obj/Debug/net8.0/Application.dll
+/home/juan/proyectos/MicroFintech/src/Application/obj/Debug/net8.0/refint/Application.dll
+/home/juan/proyectos/MicroFintech/src/Application/obj/Debug/net8.0/Application.pdb
+/home/juan/proyectos/MicroFintech/src/Application/obj/Debug/net8.0/ref/Application.dll

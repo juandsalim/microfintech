@@ -1,0 +1,26 @@
+// src/Services/FraudDetection.gRPC/Protos/fraud.proto
+syntax = "proto3";
+
+option csharp_namespace = "FraudDetection.gRPC";
+
+package fraud;
+
+// Definimos el servicio y sus métodos
+service FraudScoring {
+  // Recibe una transacción y devuelve un análisis
+  rpc AnalyzeTransaction (TransactionRequest) returns (FraudResponse);
+}
+
+// El DTO de entrada (Fíjate que cada campo tiene un número de orden, esto es para la serialización binaria)
+message TransactionRequest {
+  string user_id = 1;
+  double amount = 2;
+  string currency = 3;
+}
+
+// El DTO de salida
+message FraudResponse {
+  bool is_safe = 1;
+  double risk_score = 2;
+  string risk_reason = 3;
+}

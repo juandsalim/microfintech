@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "g1GY20JQw+QtRBf7NDyGSShPTKos2q3aqH7JkvRMF0A=",
+  "Source": "FraudDetection.gRPC",
+  "BasePath": "_content/FraudDetection.gRPC",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
